@@ -9,7 +9,7 @@ fi
 
 # Do not change code above this line. Use the PSQL variable above to query your database.
 
-# Read each row from the games CSV splitting by commas
+# Read each row from the games CSV, splitting by commas
 while IFS=',' read YEAR ROUND WINNER OPPONENT WINNER_GOALS OPPONENT_GOALS; do
 	# Skip the header row
 	if [[ $YEAR != "year" ]]; then
