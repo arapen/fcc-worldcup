@@ -17,8 +17,8 @@ while IFS=',' read YEAR ROUND WINNER OPPONENT WINNER_GOALS OPPONENT_GOALS; do
 		# Find the winner team ID
 		TEAM_ID_WINNER=$($PSQL "SELECT team_id FROM teams WHERE name='$WINNER'")
 		if [[ -z $TEAM_ID_WINNER ]]; then
-
-      # Add the team if it isn't in the table yet
+		
+			# Add the team if it isn't in the table yet
 			INSERT_WINNER_RESULT=$($PSQL "INSERT INTO teams(name) VALUES('$WINNER')")
 			TEAM_ID_WINNER=$($PSQL "SELECT team_id FROM teams WHERE name='$WINNER'")
 		fi
@@ -27,7 +27,7 @@ while IFS=',' read YEAR ROUND WINNER OPPONENT WINNER_GOALS OPPONENT_GOALS; do
 		TEAM_ID_OPPONENT=$($PSQL "SELECT team_id FROM teams WHERE name='$OPPONENT'")
 		if [[ -z $TEAM_ID_OPPONENT ]]; then
 
-      # Add it if it isn't in the table yet
+			# Add it if it isn't in the table yet
 			INSERT_OPPONENT_RESULT=$($PSQL "INSERT INTO teams(name) VALUES('$OPPONENT')")
 			TEAM_ID_OPPONENT=$($PSQL "SELECT team_id FROM teams WHERE name='$OPPONENT'")
 		fi
